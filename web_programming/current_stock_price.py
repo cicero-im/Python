@@ -1,5 +1,5 @@
-import requests
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 """
 Get the HTML code of finance yahoo and select the current qsp-price
@@ -20,7 +20,7 @@ def stock_price(symbol: str = "AAPL") -> str:
     True
     """
     url = f"https://finance.yahoo.com/quote/{symbol}?p={symbol}"
-    yahoo_finance_source = requests.get(
+    yahoo_finance_source = safe_requests.get(
         url, headers={"USER-AGENT": "Mozilla/5.0"}, timeout=10
     ).text
     soup = BeautifulSoup(yahoo_finance_source, "html.parser")
