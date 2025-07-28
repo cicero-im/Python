@@ -18,6 +18,7 @@ import pickle
 
 import numpy as np
 from matplotlib import pyplot as plt
+import fickling
 
 
 class CNN:
@@ -79,7 +80,7 @@ class CNN:
     def read_model(cls, model_path):
         # read saved model
         with open(model_path, "rb") as f:
-            model_dic = pickle.load(f)  # noqa: S301
+            model_dic = fickling.load(f)  # noqa: S301
 
         conv_get = model_dic.get("conv1")
         conv_get.append(model_dic.get("step_conv1"))
